@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herr Original | Identity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="sticky top-0 z-[100] bg-black/95 border-b border-gray-900 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        
+        <div class="flex flex-col items-center md:items-start cursor-pointer" onclick="window.location.href='index.html'">
+            <img src="images/logo.png" alt="Herr Original" class="h-10 md:h-12 w-auto object-contain">
+            
+            <div class="flex justify-between w-full mt-2 border-t border-gray-800 pt-2 px-1">
+                <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="h-3 w-auto shadow-sm">
+                <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="h-3 w-auto shadow-sm">
+                <img src="https://flagcdn.com/w40/it.png" alt="Italy" class="h-3 w-auto shadow-sm">
+            </div>
+        </div>
+
+        <div class="hidden md:flex gap-10 text-[10px] font-black tracking-[3px] uppercase">
+            <a href="index.html" class="text-red-600">Identity</a>
+            <a href="shop.html" class="text-white hover:text-red-600 transition">Inventory</a>
+            <a href="services.html" class="text-white hover:text-red-600 transition">Coding</a>
+        </div>
+
+        <a href="shop.html" class="md:hidden text-white border border-gray-700 px-4 py-2 rounded-sm text-[10px] font-black tracking-widest uppercase">
+            Shop
+        </a>
+    </div>
+</nav>
+
+    <section class="min-h-[75vh] flex items-center px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-6xl md:text-9xl font-black italic uppercase leading-none">
+                HERR <br> <span class="text-red-600">ORIGINAL</span>
+            </h1>
+            <p class="mt-6 text-gray-500 text-lg md:text-2xl max-w-2xl font-light">
+                Premium German Automotive Solutions. Genuine parts sourcing and elite software engineering for the world's most exclusive vehicles.
+            </p>
+            
+            <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                <a href="shop.html" class="flex items-center justify-center gap-3 bg-red-600 text-white px-8 py-4 font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Explore Store
+                </a>
+                <a href="services.html" class="flex items-center justify-center gap-3 border border-white text-white px-8 py-4 font-black uppercase text-[10px] tracking-widest hover:bg-red-600 hover:border-red-600 transition">
+                    <i class="fa-solid fa-microchip"></i>
+                    Coding Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#080808] px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-10">
+                <i class="fa-solid fa-microchip text-red-600 text-3xl mb-6"></i>
+                <h3 class="text-white font-black uppercase tracking-widest text-sm mb-4 italic">Advanced Coding</h3>
+                <p class="text-gray-500 leading-relaxed text-sm">Specialized ECU remapping and feature activation for Porsche, BMW, and Mercedes-Benz using factory-grade tools.</p>
+            </div>
+            <div class="glass-card p-10 border-b-2 border-red-600">
+                <i class="fa-solid fa-gears text-red-600 text-3xl mb-6"></i>
+                <h3 class="text-white font-black uppercase tracking-widest text-sm mb-4 italic">Genuine Parts</h3>
+                <p class="text-gray-500 leading-relaxed text-sm">Direct logistics from Germany and UK hubs, ensuring every bolt and sensor is 100% original and certified.</p>
+            </div>
+            <div class="glass-card p-10">
+                <i class="fa-solid fa-shield-halved text-red-600 text-3xl mb-6"></i>
+                <h3 class="text-white font-black uppercase tracking-widest text-sm mb-4 italic">Global Trust</h3>
+                <p class="text-gray-500 leading-relaxed text-sm">Serving the elite automotive community with a focus on precision, transparency, and high-performance standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 bg-black border-t border-gray-900 text-center px-6">
+        <h3 class="text-white font-black italic mb-10 tracking-[5px]">CONNECT WITH US</h3>
+        
+        <div class="flex justify-center flex-wrap gap-8 md:gap-12 mb-16">
+            <a href="https://instagram.com" target="_blank" class="social-icon hover:text-[#E1306C] text-3xl"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-icon hover:text-[#1877F2] text-3xl"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://tiktok.com" target="_blank" class="social-icon hover:text-white text-3xl"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://snapchat.com" target="_blank" class="social-icon hover:text-[#FFFC00] text-3xl"><i class="fa-brands fa-snapchat"></i></a>
+            <a href="https://wa.me/YOUR_PHONE" target="_blank" class="social-icon hover:text-[#25D366] text-3xl"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <p class="text-[9px] text-gray-800 tracking-[10px] uppercase">© 2026 Herr Original. Precision Engineering.</p>
+    </footer>
+
+    <a href="https://wa.me/YOUR_PHONE" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp text-white text-3xl"></i>
+    </a>
+
+</body>
+</html>

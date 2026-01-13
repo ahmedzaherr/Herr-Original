@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herr Original | Elite Coding Division</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#0a0a0a]">
+
+    <nav id="navbar-placeholder">...</nav> 
+
+    <section class="py-16 px-6 text-center border-b border-gray-900 bg-[#050505]">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-red-600 text-[10px] font-black uppercase tracking-[5px] mb-4 block">Professional Engineering</span>
+            <h1 class="text-white text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4">Programming & <span class="text-red-600">Diagnostics</span></h1>
+            <p class="text-gray-500 text-xs md:text-sm uppercase tracking-widest leading-loose max-w-2xl mx-auto">
+                Authorized Cloud-Based Coding Solutions for Porsche, BMW, and Mercedes-Benz. 
+                Using factory protocols only.
+            </p>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto py-16 px-6">
+        <div class="glass-card p-8 md:p-16 border-t-2 border-t-red-600 shadow-2xl">
+            
+            <form action="https://formspree.io/f/YOUR_ID" method="POST" class="space-y-12">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    <div class="md:col-span-1">
+                        <h3 class="text-white font-black italic uppercase text-lg">01. Vehicle Data</h3>
+                        <p class="text-gray-600 text-[10px] uppercase mt-2 tracking-widest leading-relaxed">Enter your technical vehicle specifications for precise file matching.</p>
+                    </div>
+                    <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" name="brand_model" placeholder="Brand & Model (e.g. BMW M4 G82)" required
+                               class="bg-black border border-gray-800 p-4 text-xs text-white focus:border-red-600 outline-none transition">
+                        <input type="text" name="production_year" placeholder="Production Year" required
+                               class="bg-black border border-gray-800 p-4 text-xs text-white focus:border-red-600 outline-none transition">
+                        <input type="text" name="vin_number" placeholder="Full VIN Number (17 Digits)" required
+                               class="bg-black border border-gray-800 p-4 text-[10px] font-mono text-red-600 tracking-widest focus:border-red-600 outline-none transition col-span-full">
+                    </div>
+                </div>
+
+                <hr class="border-gray-900">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="md:col-span-1">
+                        <h3 class="text-white font-black italic uppercase text-lg">02. Engineering</h3>
+                        <p class="text-gray-600 text-[10px] uppercase mt-2 tracking-widest leading-relaxed">Select the required software intervention level.</p>
+                    </div>
+                    <div class="md:col-span-2 grid grid-cols-1 gap-4">
+                        <div class="relative">
+                            <select name="service_category" class="w-full bg-black border border-gray-800 p-4 text-xs text-gray-400 focus:border-red-600 outline-none transition appearance-none cursor-pointer">
+                                <option value="" disabled selected>Select Technical Category</option>
+                                <option>Performance: ECU Stage 1 / Stage 2 Optimization</option>
+                                <option>Multimedia: Apple CarPlay / Android Auto Full Screen</option>
+                                <option>Navigation: Latest Road Map Updates 2026</option>
+                                <option>Retrofit: New Component Activation (LED, HUD, etc)</option>
+                                <option>Diagnostics: Remote Cloud Fault Analysis</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-700 text-[10px]"></i>
+                        </div>
+                        <textarea name="technical_notes" rows="4" placeholder="Specific requirements or error codes (e.g. DTC P0420)..."
+                                  class="w-full bg-black border border-gray-800 p-4 text-xs text-white focus:border-red-600 outline-none transition"></textarea>
+                    </div>
+                </div>
+
+                <hr class="border-gray-900">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="md:col-span-1">
+                        <h3 class="text-white font-black italic uppercase text-lg">03. Contact</h3>
+                        <p class="text-gray-600 text-[10px] uppercase mt-2 tracking-widest">How should our engineers reach you?</p>
+                    </div>
+                    <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" name="client_name" placeholder="Full Name" required
+                               class="bg-black border border-gray-800 p-4 text-xs text-white focus:border-red-600 outline-none transition">
+                        <input type="email" name="client_email" placeholder="Professional Email" required
+                               class="bg-black border border-gray-800 p-4 text-xs text-white focus:border-red-600 outline-none transition">
+                        <input type="tel" name="client_phone" placeholder="Phone (with Country Code)" required
+                               class="bg-black border border-gray-800 p-4 text-xs text-white focus:border-red-600 outline-none transition col-span-full">
+                    </div>
+                </div>
+
+                <div class="pt-8">
+                    <button type="submit" class="group relative w-full bg-white text-black py-6 font-black uppercase text-xs tracking-[8px] overflow-hidden transition-all duration-500 hover:bg-red-600 hover:text-white">
+                        <span class="relative z-10">Initialize Secure Request</span>
+                        <div class="absolute inset-0 w-0 bg-red-600 transition-all duration-500 group-hover:w-full"></div>
+                    </button>
+                    <p class="text-center text-gray-700 text-[8px] uppercase tracking-[3px] mt-4">By clicking, you authorize our technical team to analyze your vehicle data.</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer id="footer-placeholder">...</footer>
+
+</body>
+</html>

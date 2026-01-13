@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herr Original | Professional Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black">
+
+    <nav class="sticky top-0 z-[100] bg-black/95 border-b border-gray-900 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        
+        <div class="flex flex-col items-center md:items-start cursor-pointer" onclick="window.location.href='index.html'">
+            <img src="images/logo.png" alt="Herr Original" class="h-10 md:h-12 w-auto object-contain">
+            
+            <div class="flex justify-between w-full mt-2 border-t border-gray-800 pt-2 px-1">
+                <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="h-3 w-auto">
+                <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="h-3 w-auto">
+                <img src="https://flagcdn.com/w40/it.png" alt="Italy" class="h-3 w-auto">
+            </div>
+        </div>
+
+        <div class="hidden md:flex gap-10 text-[10px] font-black tracking-[3px] uppercase">
+            <a href="index.html" class="hover:text-red-600 transition">Identity</a>
+            <a href="shop.html" class="hover:text-red-600 transition">Inventory</a>
+            <a href="services.html" class="hover:text-red-600 transition">Coding</a>
+        </div>
+
+        <a href="shop.html" class="md:hidden text-white border border-gray-700 px-4 py-2 rounded-sm text-[10px] font-black tracking-widest uppercase">
+            Shop
+        </a>
+    </div>
+</nav>
+
+    <section class="py-10 border-b border-gray-900 px-6 bg-[#050505]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <h2 class="text-white text-2xl font-black italic uppercase tracking-tighter">Premium <span class="text-red-600">Inventory</span></h2>
+                <p class="text-gray-600 text-[10px] uppercase tracking-widest mt-1">Sourcing Genuine Parts Worldwide</p>
+            </div>
+            <div class="w-full md:w-96 relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-[10px]"></i>
+                <input type="text" id="searchInput" placeholder="Search by PN or Name..." 
+                       class="w-full bg-black border border-gray-800 p-3 pl-12 rounded text-[10px] text-white focus:border-red-600 outline-none transition">
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto py-12 px-6 flex flex-col md:flex-row gap-12">
+        
+        <aside class="w-full md:w-72">
+            <h3 class="text-red-600 text-[10px] font-black uppercase tracking-[4px] mb-8 border-l-2 border-red-600 pl-3">Catalog Menu</h3>
+            
+            <div id="accordion-menu" class="flex flex-col border-t border-gray-900">
+                </div>
+
+            <button onclick="resetAllFilters()" class="mt-10 text-[9px] text-gray-600 underline uppercase tracking-widest hover:text-white block">
+                Reset All Filters
+            </button>
+        </aside>
+
+        <div class="flex-1">
+            <div class="mb-8 flex justify-between items-center border-b border-gray-900 pb-4">
+                <div class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+                    Active Selection: <span id="selection-text" class="text-white">Full Catalog</span>
+                </div>
+            </div>
+            
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/YOUR_PHONE" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp text-white text-3xl"></i>
+    </a>
+
+    <script src="js/data.js"></script>
+    <script>
+        // 1. بناء القائمة المنسدلة تلقائياً من البيانات
+        function buildAccordionMenu() {
+            const brands = [...new Set(productsData.map(p => p.brand))];
+            const menu = document.getElementById('accordion-menu');
+            
+            menu.innerHTML = brands.map(brand => {
+                const cats = [...new Set(productsData.filter(p => p.brand === brand).map(p => p.category))];
+                return `
+                    <div class="border-b border-gray-900">
+                        <button onclick="toggleAccordion('${brand}')" 
+                                class="brand-item w-full flex justify-between items-center text-gray-500 hover:text-white font-bold uppercase text-[11px] py-4 transition-all">
+                            <span>${brand}</span>
+                            <i class="fa-solid fa-chevron-down text-[8px]"></i>
+                        </button>
+                        <div id="cat-list-${brand}" class="category-container">
+                            ${cats.map(cat => `
+                                <button onclick="applyFilter('${brand}', '${cat}', this)" 
+                                        class="cat-btn w-full text-left text-[10px] text-gray-500 hover:text-red-600 py-2 font-bold uppercase transition">
+                                    • ${cat}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 2. التحكم في الفتح والقفل
+        function toggleAccordion(brand) {
+            const target = document.getElementById(`cat-list-${brand}`);
+            const btn = target.previousElementSibling;
+            
+            // قفل الباقي لضمان التنظيم
+            document.querySelectorAll('.category-container').forEach(el => {
+                if(el.id !== `cat-list-${brand}`) el.classList.remove('open');
+            });
+            document.querySelectorAll('.brand-item').forEach(el => {
+                if(el !== btn) el.classList.remove('active');
+            });
+
+            target.classList.toggle('open');
+            btn.classList.toggle('active');
+
+            // عرض كل منتجات البراند بمجرد الضغط عليه
+            const brandProducts = productsData.filter(p => p.brand === brand);
+            renderProducts(brandProducts);
+            document.getElementById('selection-text').innerText = brand;
+        }
+
+        // 3. فلترة القسم النهائي
+        function applyFilter(brand, cat, btn) {
+            // تمييز الزر المختار
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('text-red-600'));
+            btn.classList.add('text-red-600');
+
+            const filtered = productsData.filter(p => p.brand === brand && p.category === cat);
+            renderProducts(filtered);
+            document.getElementById('selection-text').innerText = `${brand} > ${cat}`;
+        }
+
+        // 4. عرض المنتجات في الشبكة
+        function renderProducts(items) {
+            const grid = document.getElementById('productsGrid');
+            if(items.length === 0) {
+                grid.innerHTML = '<div class="col-span-3 py-20 text-gray-700 text-center uppercase text-[10px] font-black tracking-widest">No matching items found.</div>';
+                return;
+            }
+            grid.innerHTML = items.map(p => `
+                <div class="glass-card group overflow-hidden">
+                    <div class="h-44 bg-[#050505] relative overflow-hidden">
+                        <img src="${p.image}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-white/10 backdrop-blur-md text-white text-[8px] font-black px-2 py-1 uppercase border border-white/10">${p.brand}</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[9px] text-red-600 font-black uppercase tracking-widest">${p.category}</p>
+                        <h3 class="text-white font-bold mt-1 text-sm tracking-tight">${p.name}</h3>
+                        <p class="text-[9px] text-gray-700 font-mono mt-1">${p.partNumber}</p>
+                        <div class="mt-6 flex justify-between items-center border-t border-gray-900 pt-4">
+                            <span class="text-white font-black text-lg italic font-mono">€${p.price}</span>
+                            <button onclick="window.open('https://wa.me/YOUR_PHONE?text=Order Request: ${p.name}')" 
+                                    class="bg-white text-black text-[9px] font-black px-4 py-2 uppercase hover:bg-red-600 hover:text-white transition">
+                                Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. البحث العام
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            const filtered = productsData.filter(p => p.name.toLowerCase().includes(val) || p.partNumber.toLowerCase().includes(val));
+            renderProducts(filtered);
+        });
+
+        function resetAllFilters() {
+            document.querySelectorAll('.category-container').forEach(el => el.classList.remove('open'));
+            document.querySelectorAll('.brand-item').forEach(el => el.classList.remove('active'));
+            document.getElementById('selection-text').innerText = "Full Catalog";
+            renderProducts(productsData);
+        }
+
+        window.onload = () => {
+            buildAccordionMenu();
+            renderProducts(productsData);
+        };
+    </script>
+</body>
+</html>
